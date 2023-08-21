@@ -10,7 +10,7 @@ const SearchField = ({ onSearch }) => {
   };
 
   return (
-    <div className="flex gap-10">
+    <div className="flex gap-10 mmd:flex-col">
       <input
         className="bg-gray-50 border border-gray-300 text-sm w-full
         p-2.5 outline-none focus:border-blue-500 focus:ring-2 
@@ -105,17 +105,25 @@ const UnsplashPhotos = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  });
 
   return (
     <>
-      <div className="px-32 py-20">
+      <div className="px-32 py-7 bg-gray-900">
+        <div className="flex justify-center pb-7">
+          <h1 className="text-white text-center text-2xl font-bold">
+            Find Images from Unsplash Gallery!
+          </h1>
+        </div>
         <SearchField onSearch={handleSearch} />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 my-10">
+      </div>
+      <div className="px-32">
+        <div className="grid msm:grid-cols-1 mmd:grid-cols-2 mlg:grid-cols-3 mxl:grid-cols-6 gap-4 my-10">
+          {photos.length === 0 && !loading && <div>No results found.</div>}
           {photos.map((photo) => (
             <div
               key={photo.id}
-              className="bg-gray-100 p-2.5 rounded-lg"
+              className="bg-gray-100 p-2.5 rounded-lg max-h-96 w-full"
               onClick={() => openModal(photo)}
             >
               <img

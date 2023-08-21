@@ -1,5 +1,4 @@
-
-import useAxios from "./hooks/useAxios";
+//run cmd "yarn start"
 import UnsplashPhotos from "./components/UnsplashPhotos";
 
 function App() {
